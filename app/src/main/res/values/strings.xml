@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MoodNotes</string>
+    <string name="empty_list">Such empty press \'+\' to add notes</string>
+</resources>

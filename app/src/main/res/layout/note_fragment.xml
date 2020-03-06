@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.computerwizards.moodnotes.noteui.NoteViewModel" />
+
+        <variable
+            name="note"
+            type="com.computerwizards.moodnotes.database.Note" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onSave()}"
+                android:text="Save" />
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:layout_marginEnd="@dimen/spacing_normal"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.onCancel()}"
+                android:text="Cancel" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:ems="10"
+            android:hint="title"
+            android:inputType="textPersonName"
+            android:text="@={note.title}" />
+
+        <EditText
+            android:id="@+id/bodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:layout_marginBottom="26dp"
+            android:layout_weight="0.8"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="body"
+            android:inputType="textMultiLine"
+            android:text="@={note.message}" />
+
+        <Button
+            android:id="@+id/moodButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            android:layout_marginBottom="26dp"
+            android:onClick="@{() -> viewModel.navigateToMood()}"
+            android:text="SET MOOD" />
+    </LinearLayout>
+
+
+</layout>
