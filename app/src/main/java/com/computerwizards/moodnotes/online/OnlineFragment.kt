@@ -20,7 +20,9 @@ class OnlineFragment : Fragment() {
 
 
         viewModel =
-            ViewModelProvider(this, OnlineViewModel.Factory()).get(OnlineViewModel::class.java)
+            ViewModelProvider(this, OnlineViewModel.Factory(requireActivity().application)).get(
+                OnlineViewModel::class.java
+            )
 
         val binding = OnlineFragmentBinding.inflate(inflater)
 
@@ -31,6 +33,19 @@ class OnlineFragment : Fragment() {
             binding.response = it
         })
 
+
+        val adapter = RedditListAdapter(
+            RedditClickListener {
+
+            }
+        )
+
+        binding.recyclerView.adapter = adapter
+
+
+        viewModel.redditList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
 
 
         return binding.root

@@ -4,18 +4,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.computerwizards.moodnotes.database.Note
-import com.computerwizards.moodnotes.online.RedditListAdapter
-import com.computerwizards.moodnotes.online.model.ChildData
 import com.computerwizards.moodnotes.online.model.Response
 
-
-@BindingAdapter("listData")
-fun setData(recyclerView: RecyclerView, data: List<ChildData>) {
-    val adapter = recyclerView.adapter as RedditListAdapter
-    adapter.submitList(data)
-}
 
 @BindingAdapter("showOnlyWhenEmpty")
 fun View.showOnlyWhenEmpty(data: List<Note>?) {

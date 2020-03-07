@@ -1,28 +1,32 @@
 package com.computerwizards.moodnotes.online
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.computerwizards.moodnotes.online.model.RedditResponse
+import androidx.lifecycle.*
+import com.computerwizards.moodnotes.database.RedditRepository
+import com.computerwizards.moodnotes.database.getDatabase
 import com.computerwizards.moodnotes.online.model.Response
-import com.computerwizards.moodnotes.online.model.asDomainModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
+import java.io.IOException
 
 enum class AdviceApiStatus { LOADING, ERROR, DONE }
 
-class OnlineViewModel : ViewModel() {
+class OnlineViewModel(application: Application) : AndroidViewModel(application) {
 
 
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(
         viewModelJob + Dispatchers.Main
     )
+
+    private val redditRepository = RedditRepository(getDatabase(application))
+    val redditList = redditRepository.reddits
+
     private val _status = MutableLiveData<AdviceApiStatus>()
     val status: LiveData<AdviceApiStatus> = _status
 
@@ -31,7 +35,10 @@ class OnlineViewModel : ViewModel() {
 
     init {
         getAdvice()
-        getListing()
+        getListingFromRepository()
+        redditList.observeForever(Observer {
+            Log.d("OnlineViewModel", "now observing redditList: ${it.size}")
+        })
     }
 
     fun getAdvice() {
@@ -48,26 +55,23 @@ class OnlineViewModel : ViewModel() {
 
     }
 
-    fun getListing() {
-        RedditApi.redditApiService.getListing().enqueue(object : Callback<RedditResponse> {
-            override fun onFailure(call: Call<RedditResponse>, t: Throwable) {
-                Log.e("OnlineViewModel", "Reddit Error: ${t.message}")
+    fun getListingFromRepository() {
+        viewModelScope.launch {
+            try {
+                redditRepository.refreshReddits()
+                Log.d("OnlineViewModel", "${redditList.value}")
+            } catch (networkError: IOException) {
+                Log.e("OnlineViewModel", "${networkError.message}")
             }
+        }
 
-            override fun onResponse(
-                call: Call<RedditResponse>,
-                response: retrofit2.Response<RedditResponse>
-            ) {
-                Log.d("OnlineViewModel", "RedditResponse: ${response.body()?.asDomainModel()}")
-            }
-        })
     }
 
-    class Factory : ViewModelProvider.Factory {
+    class Factory(private val application: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(OnlineViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return OnlineViewModel() as T
+                return OnlineViewModel(application) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

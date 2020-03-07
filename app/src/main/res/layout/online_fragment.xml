@@ -13,13 +13,6 @@
             name="viewModel"
             type="com.computerwizards.moodnotes.online.OnlineViewModel" />
 
-        <variable
-            name="child"
-            type="com.computerwizards.moodnotes.online.model.ChildData" />
-
-        <variable
-            name="clickListener"
-            type="com.computerwizards.moodnotes.online.RedditClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +54,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/reddit_item" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

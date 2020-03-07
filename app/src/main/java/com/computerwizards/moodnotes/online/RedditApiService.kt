@@ -2,8 +2,10 @@ package com.computerwizards.moodnotes.online
 
 import com.computerwizards.moodnotes.online.model.RedditResponse
 import com.computerwizards.moodnotes.online.model.Response
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -39,7 +41,7 @@ object AdviceApi {
 interface RedditApiService {
 
     @GET("best.json")
-    fun getListing(): Call<RedditResponse>
+    fun getListing(): Deferred<RedditResponse>
 
 }
 
@@ -50,6 +52,7 @@ object RedditApi {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 

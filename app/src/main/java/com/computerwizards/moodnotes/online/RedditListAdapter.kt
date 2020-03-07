@@ -5,27 +5,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.computerwizards.moodnotes.databinding.OnlineFragmentBinding
-import com.computerwizards.moodnotes.online.model.ChildData
+import com.computerwizards.moodnotes.database.Reddit
+import com.computerwizards.moodnotes.databinding.RedditItemBinding
 
 class RedditListAdapter(val clickListener: RedditClickListener) :
-    ListAdapter<ChildData, RedditListAdapter.RedditListViewHolder>(DiffCallback) {
+    ListAdapter<Reddit, RedditListAdapter.RedditListViewHolder>(DiffCallback) {
 
-    companion object DiffCallback : DiffUtil.ItemCallback<ChildData>() {
-        override fun areItemsTheSame(oldItem: ChildData, newItem: ChildData): Boolean {
-//            TODO("Add id to data of ChildData")
-            return oldItem.data.title == newItem.data.title
+    companion object DiffCallback : DiffUtil.ItemCallback<Reddit>() {
+        override fun areItemsTheSame(oldItem: Reddit, newItem: Reddit): Boolean {
+//            TODO("Add id to data of Reddit")
+            return oldItem.title == newItem.title
         }
 
-        override fun areContentsTheSame(oldItem: ChildData, newItem: ChildData): Boolean {
+        override fun areContentsTheSame(oldItem: Reddit, newItem: Reddit): Boolean {
             return oldItem == newItem
         }
     }
 
-    class RedditListViewHolder(private var binding: OnlineFragmentBinding) :
+    class RedditListViewHolder(private var binding: RedditItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(listener: RedditClickListener, childData: ChildData) {
-            binding.child = childData
+        fun bind(listener: RedditClickListener, reddit: Reddit) {
+            binding.reddit = reddit
             binding.clickListener = listener
             binding.executePendingBindings()
         }
@@ -33,7 +33,7 @@ class RedditListAdapter(val clickListener: RedditClickListener) :
         companion object {
             fun from(parent: ViewGroup): RedditListViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = OnlineFragmentBinding.inflate(layoutInflater, parent, false)
+                val binding = RedditItemBinding.inflate(layoutInflater, parent, false)
                 return RedditListViewHolder(binding)
             }
         }
@@ -50,6 +50,6 @@ class RedditListAdapter(val clickListener: RedditClickListener) :
 }
 
 
-class RedditClickListener(val clickListener: (childData: ChildData) -> Unit) {
-    fun onClick(childData: ChildData) = clickListener(childData)
+class RedditClickListener(val clickListener: (reddit: Reddit) -> Unit) {
+    fun onClick(reddit: Reddit) = clickListener(reddit)
 }
