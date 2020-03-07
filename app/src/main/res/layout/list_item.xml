@@ -11,7 +11,7 @@
 
         <variable
             name="clickListener"
-            type="com.computerwizards.moodnotes.notelist.NoteClickListener" />
+            type="com.computerwizards.moodnotes.journal.notelist.NoteClickListener" />
 
     </data>
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{() -> clickListener.onClick(note)}"
-        tools:context="com.computerwizards.moodnotes.notelist.NoteListFragment">
+        tools:context=".journal.notelist.NoteListFragment">
 
 
         <ImageView

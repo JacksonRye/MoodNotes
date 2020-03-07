@@ -1,16 +1,17 @@
-package com.computerwizards.moodnotes.notelist
+package com.computerwizards.moodnotes.journal.notelist
 
 import android.util.Log
 import androidx.lifecycle.*
 import com.computerwizards.moodnotes.database.Note
 import com.computerwizards.moodnotes.database.NoteDao
-import com.computerwizards.moodnotes.repository.NoteRepository
+import com.computerwizards.moodnotes.database.NoteRepository
 import kotlinx.coroutines.launch
 
 class NoteListViewModel(private val dao: NoteDao) : ViewModel() {
 
 
-    private val repository = NoteRepository(dao)
+    private val repository =
+        NoteRepository(dao)
 
     val noteList = repository.notes
 

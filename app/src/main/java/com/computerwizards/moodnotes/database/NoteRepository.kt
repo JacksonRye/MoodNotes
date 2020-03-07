@@ -1,8 +1,6 @@
-package com.computerwizards.moodnotes.repository
+package com.computerwizards.moodnotes.database
 
 import androidx.lifecycle.LiveData
-import com.computerwizards.moodnotes.database.Note
-import com.computerwizards.moodnotes.database.NoteDao
 
 class NoteRepository(private val noteDao: NoteDao) {
 

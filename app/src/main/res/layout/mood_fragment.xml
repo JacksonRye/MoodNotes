@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.computerwizards.moodnotes.moodui.MoodViewModel" />
+            type="com.computerwizards.moodnotes.journal.moodui.MoodViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

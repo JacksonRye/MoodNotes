@@ -30,9 +30,24 @@ interface NoteDao {
 
 }
 
-@Database(entities = [Note::class], version = 1)
+@Dao
+interface RedditDao {
+
+    @Query("select * from reddit")
+    fun getReddits(): LiveData<List<Reddit>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(reddits: List<Reddit>)
+
+}
+
+
+@Database(entities = [Note::class, Reddit::class], version = 2)
 abstract class NoteDatabase : RoomDatabase() {
     abstract val noteDao: NoteDao
+    abstract val redditDao: RedditDao
+
+
 }
 
 private lateinit var INSTANCE: NoteDatabase
@@ -44,7 +59,7 @@ fun getDatabase(context: Context): NoteDatabase {
                 context.applicationContext,
                 NoteDatabase::class.java,
                 "notes"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
         }
     }
     return INSTANCE

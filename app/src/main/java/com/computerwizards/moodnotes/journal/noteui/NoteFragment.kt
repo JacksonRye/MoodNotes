@@ -1,4 +1,4 @@
-package com.computerwizards.moodnotes.noteui
+package com.computerwizards.moodnotes.journal.noteui
 
 import android.os.Bundle
 import android.util.Log

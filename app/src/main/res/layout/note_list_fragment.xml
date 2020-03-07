@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.computerwizards.moodnotes.notelist.NoteListViewModel" />
+            type="com.computerwizards.moodnotes.journal.notelist.NoteListViewModel" />
     </data>
 
 

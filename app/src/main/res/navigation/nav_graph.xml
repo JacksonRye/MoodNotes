@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/journal"
-        android:name="com.computerwizards.moodnotes.notelist.NoteListFragment"
+        android:name="com.computerwizards.moodnotes.journal.notelist.NoteListFragment"
         android:label="NoteListFragment"
         tools:layout="@layout/note_list_fragment">
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/noteFragment"
-        android:name="com.computerwizards.moodnotes.noteui.NoteFragment"
+        android:name="com.computerwizards.moodnotes.journal.noteui.NoteFragment"
         android:label="note_fragment"
         tools:layout="@layout/note_fragment">
         <argument
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/moodFragment"
-        android:name="com.computerwizards.moodnotes.moodui.MoodFragment"
+        android:name="com.computerwizards.moodnotes.journal.moodui.MoodFragment"
         android:label="MoodFragment"
         tools:layout="@layout/mood_fragment">
         <argument

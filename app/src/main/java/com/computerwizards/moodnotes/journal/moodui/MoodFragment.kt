@@ -1,4 +1,4 @@
-package com.computerwizards.moodnotes.moodui
+package com.computerwizards.moodnotes.journal.moodui
 
 import android.os.Bundle
 import android.view.LayoutInflater

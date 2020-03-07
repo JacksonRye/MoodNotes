@@ -1,14 +1,15 @@
-package com.computerwizards.moodnotes.moodui
+package com.computerwizards.moodnotes.journal.moodui
 
 import androidx.lifecycle.*
 import com.computerwizards.moodnotes.database.Note
 import com.computerwizards.moodnotes.database.NoteDao
-import com.computerwizards.moodnotes.repository.NoteRepository
+import com.computerwizards.moodnotes.database.NoteRepository
 import kotlinx.coroutines.launch
 
 class MoodViewModel(dao: NoteDao, var note: Note) : ViewModel() {
 
-    private val repository = NoteRepository(dao)
+    private val repository =
+        NoteRepository(dao)
 
     private val _navigateToNote = MutableLiveData<Boolean?>()
     val navigateToNote: LiveData<Boolean?> = _navigateToNote

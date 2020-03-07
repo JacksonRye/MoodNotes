@@ -5,14 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
-import com.computerwizards.moodnotes.R
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.computerwizards.moodnotes.databinding.OnlineFragmentBinding
 
 class OnlineFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = OnlineFragment()
-    }
 
     private lateinit var viewModel: OnlineViewModel
 
@@ -20,13 +17,24 @@ class OnlineFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.online_fragment, container, false)
+
+
+        viewModel =
+            ViewModelProvider(this, OnlineViewModel.Factory()).get(OnlineViewModel::class.java)
+
+        val binding = OnlineFragmentBinding.inflate(inflater)
+
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        viewModel.response.observe(viewLifecycleOwner, Observer {
+            binding.response = it
+        })
+
+
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(OnlineViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
