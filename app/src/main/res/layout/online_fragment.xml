@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="response"
-            type="com.computerwizards.moodnotes.online.model.Response" />
-
-        <variable
             name="viewModel"
             type="com.computerwizards.moodnotes.online.OnlineViewModel" />
 
@@ -23,28 +19,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView5"
         tools:context=".online.OnlineFragment">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="260dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setAdvice="@{response}" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:onClick="@{() -> viewModel.getAdvice()}"
-            android:text="Another One"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

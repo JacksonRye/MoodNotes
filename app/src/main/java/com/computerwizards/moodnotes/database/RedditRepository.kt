@@ -11,6 +11,7 @@ class RedditRepository(private val database: NoteDatabase) {
 
     val reddits: LiveData<List<Reddit>> = database.redditDao.getReddits()
 
+
     suspend fun refreshReddits() {
         withContext(Dispatchers.IO) {
             Log.d("RedditR", "refresh videos called")

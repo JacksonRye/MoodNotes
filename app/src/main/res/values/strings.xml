@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MoodNotes</string>
     <string name="empty_list">Such empty press \'+\' to add notes</string>
+    <string name="about">Made by Jackson Chijioke\n
+    CopyRight 2020</string>
+    <string name="advice">And Here\'s my advice for you</string>
 </resources>

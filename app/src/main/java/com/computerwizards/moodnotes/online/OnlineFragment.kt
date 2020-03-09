@@ -29,9 +29,6 @@ class OnlineFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        viewModel.response.observe(viewLifecycleOwner, Observer {
-            binding.response = it
-        })
 
 
         val adapter = RedditListAdapter(

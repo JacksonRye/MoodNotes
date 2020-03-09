@@ -1,15 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.computerwizards.moodnotes.about.AboutViewModel" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="400dp"
+            android:layout_height="101dp"
+            android:layout_marginStart="@dimen/spacing_little"
+            android:layout_marginTop="@dimen/spacing_little"
+            android:layout_marginEnd="@dimen/spacing_little"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            app:srcCompat="@drawable/ic_cool" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/RedditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_little"
+            android:layout_marginTop="@dimen/spacing_little"
+            android:layout_marginEnd="@dimen/spacing_little"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:text="MoodNotes" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_little"
+            android:layout_marginTop="@dimen/spacing_little"
+            android:layout_marginEnd="@dimen/spacing_little"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:text="@string/about" />
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/RedditHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_little"
+            android:layout_marginTop="@dimen/spacing_little"
+            android:layout_marginEnd="@dimen/spacing_little"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:text="@string/advice" />
+
+        <TextView
+            android:id="@+id/adviceText"
+            style="@style/MyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_little"
+            android:layout_marginTop="@dimen/spacing_little"
+            android:layout_marginEnd="@dimen/spacing_little"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:textSize="18sp"
+            tools:text="A stitch in time saves nine" />
+
+        <Button
+            android:id="@+id/anotherButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/spacing_little"
+            android:layout_marginTop="@dimen/spacing_little"
+            android:layout_marginEnd="@dimen/spacing_little"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:onClick="@{() -> viewModel.getAdvice()}"
+            android:text="Another One" />
+
+    </LinearLayout>
 
 
 </layout>
