@@ -15,8 +15,19 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/primaryColor"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+
+                <TextView
+                    style="@style/RedditHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/secondaryColor" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <fragment
                 android:id="@+id/nav_host_fragment"
