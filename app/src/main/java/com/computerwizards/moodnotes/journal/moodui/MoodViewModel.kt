@@ -6,6 +6,9 @@ import com.computerwizards.moodnotes.database.NoteDao
 import com.computerwizards.moodnotes.database.NoteRepository
 import kotlinx.coroutines.launch
 
+// TODO Work on MoodFragment Navigations
+
+
 class MoodViewModel(dao: NoteDao, var note: Note) : ViewModel() {
 
     private val repository =

@@ -1,11 +1,54 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/secondaryLightColor</item>
+    </style>
+
+
+    <style name="RedditHeader" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="font">@font/aclonica</item>
+        <item name="fontFamily">@font/aclonica</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="MyTextView" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="font">@font/alex_brush</item>
+        <item name="fontFamily">@font/alex_brush</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+
+    <style name="MyEditTextTitle" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="font">@font/aclonica</item>
+        <item name="fontFamily">@font/aclonica</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="MyEditTextTitle.Body" parent="MyEditTextTitle">
+        <item name="font">@font/alex_brush</item>
+        <item name="fontFamily">@font/alex_brush</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
+    </style>
+
+
+    <style name="MyCardView">
+
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginStart">@dimen/spacing_little</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_little</item>
+        <item name="cardBackgroundColor">@color/cardview_shadow_end_color</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardElevation">2dp</item>
+
     </style>
 
 </resources>

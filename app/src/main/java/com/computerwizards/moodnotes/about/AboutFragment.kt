@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.computerwizards.moodnotes.R
 
+// TODO Add Adviceslip api to AboutFragment
+
 class AboutFragment : Fragment() {
 
     companion object {

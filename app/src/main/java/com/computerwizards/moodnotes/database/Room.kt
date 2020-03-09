@@ -42,7 +42,7 @@ interface RedditDao {
 }
 
 
-@Database(entities = [Note::class, Reddit::class], version = 2)
+@Database(entities = [Note::class, Reddit::class], version = 3)
 abstract class NoteDatabase : RoomDatabase() {
     abstract val noteDao: NoteDao
     abstract val redditDao: RedditDao

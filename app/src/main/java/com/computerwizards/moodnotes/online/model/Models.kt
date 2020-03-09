@@ -28,18 +28,20 @@ data class ChildData(
 
 data class SingleData(
     val subreddit: String,
-    val title: String
+    val title: String,
+    val thumbnail: String
 
 )
 
-data class RedditItem(val title: String, val subreddit: String)
+data class RedditItem(val title: String, val subreddit: String, val thumbnail: String)
 
 
 fun RedditResponse.asDomainModel(): List<RedditItem> {
     return data.children.map {
         RedditItem(
             it.data.title,
-            it.data.subreddit
+            it.data.subreddit,
+            it.data.thumbnail
         )
     }
 }
@@ -49,7 +51,8 @@ fun RedditResponse.asDatabaseModel(): List<Reddit> {
     return data.children.map {
         Reddit(
             it.data.title,
-            it.data.subreddit
+            it.data.subreddit,
+            it.data.thumbnail
         )
     }
 }

@@ -3,8 +3,7 @@ package com.computerwizards.moodnotes.database
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.computerwizards.moodnotes.online.model.ChildData
-import com.computerwizards.moodnotes.online.model.SingleData
+import com.computerwizards.moodnotes.online.model.RedditItem
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -25,15 +24,19 @@ data class Note(
 data class Reddit constructor(
     @PrimaryKey
     val title: String,
-    val subreddit: String
+    val subreddit: String,
+    val thumbnail: String
 )
 
 
 // Map Reddits to domain entities
-fun List<Reddit>.asDomainModel(): List<ChildData> {
+fun List<Reddit>.asDomainModel(): List<RedditItem> {
     return map {
-        ChildData(
-            data = SingleData(it.subreddit, it.title)
+        RedditItem(
+            title = it.title,
+            subreddit = it.subreddit,
+            thumbnail = it.thumbnail
         )
+
     }
 }

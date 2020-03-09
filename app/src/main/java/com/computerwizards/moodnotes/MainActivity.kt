@@ -9,6 +9,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.computerwizards.moodnotes.databinding.ActivityMainBinding
 
+// TODO Add header to Menu drawer
+
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
